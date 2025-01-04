@@ -1,22 +1,21 @@
-
-const rL = require('readline')
+const rL = require("readline");
 
 const prompt = rL.createInterface({
-input: process.stdin,
-output: process.stdout
-})
+  input: process.stdin,
+  output: process.stdout,
+});
 
 const promptPromise = {
-    question: (pergunta) => new Promise((resolve, rejects) => {
-        try {
-
-            prompt.question((pergunta), (resposta) => resolve(resposta))
-        } catch (error){
-rejects(error)
-        }
+  question: (pergunta) =>
+    new Promise((resolve, rejects) => {
+      try {
+        prompt.question(pergunta, (resposta) => resolve(resposta));
+      } catch (error) {
+        rejects(error);
+      }
     }),
-    close: () => prompt.close()
-}
+  close: () => prompt.close(),
+};
 
 // prompt.question("Qual o seu numero favorito?:  ",(resposta) => {
 // console.log(`O dobro do seu número favorito é: ${parseInt(resposta)*2}`)
@@ -27,14 +26,13 @@ rejects(error)
 //     })
 // })
 
-async function askUser () {
-const numero = await promptPromise.question('Qual o seu numero favorito:')
-console.log(`O dobro do seu número favorito é: ${parseInt(numero)*2}`)
+async function askUser() {
+  const numero = await promptPromise.question("Qual o seu numero favorito:");
+  console.log(`O dobro do seu número favorito é: ${parseInt(numero) * 2}`);
 
-const cor = await promptPromise.question("Qual a sua cor favorita?: ")
-console.log("sua cor favorita é "  + cor )
-promptPromise.close()
+  const cor = await promptPromise.question("Qual a sua cor favorita?: ");
+  console.log("sua cor favorita é " + cor);
+  promptPromise.close();
 }
-
 
 askUser();
