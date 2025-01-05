@@ -19,7 +19,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn EXPRESS-TSC/helo-word.ts",
     "build": "tsc",
-    "start": "node dist/helo-word.js"
+    "start": "node dist/helo-word.js",
+    "dev": "ts-node-dev EXPRESS-TSC/helo-word.ts"
   },
   "description": ""
 }
